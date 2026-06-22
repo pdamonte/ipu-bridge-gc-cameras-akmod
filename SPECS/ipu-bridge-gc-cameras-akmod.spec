@@ -39,31 +39,31 @@ cat > %{src_dir}/kmodtool.conf <<'EOF'
 %define kmod_common_package 1
 EOF
 
-cat > %{src_dir}/%{akmod_name}.kmodspec <<'EOF'
-%global kmod_name ipu_bridge
-%global kmod_driver_version 0.1
-
-Name:           %{kmod_name}-kmod
-Version:        %{kmod_driver_version}
-Release:        1%{?dist}
-Summary:        Intel IPU6 bridge module with GC camera sensor support
-License:        GPL-2.0-only
-
-%description
-Patched Intel IPU6 bridge module with support for GCTI5035 and GCTI8034.
-
-%prep
-
-%build
-make KERNEL_RELEASE=%{kernel_version} KERNEL_BUILD=/usr/src/kernels/%{kernel_version}
-
-%install
-install -D -m 0644 ipu-bridge.ko \
-  %{buildroot}/usr/lib/modules/%{kernel_version}/extra/ipu-bridge.ko
-
-%files
-/usr/lib/modules/%{kernel_version}/extra/ipu-bridge.ko
-EOF
+{
+	printf '%%global kmod_name ipu_bridge\n'
+	printf '%%global kmod_driver_version 0.1\n'
+	printf '\n'
+	printf 'Name:           %%{kmod_name}-kmod\n'
+	printf 'Version:        %%{kmod_driver_version}\n'
+	printf 'Release:        1%%{?dist}\n'
+	printf 'Summary:        Intel IPU6 bridge module with GC camera sensor support\n'
+	printf 'License:        GPL-2.0-only\n'
+	printf '\n'
+	printf '%%description\n'
+	printf 'Patched Intel IPU6 bridge module with support for GCTI5035 and GCTI8034.\n'
+	printf '\n'
+	printf '%%prep\n'
+	printf '\n'
+	printf '%%build\n'
+	printf 'make KERNEL_RELEASE=%%{kernel_version} KERNEL_BUILD=/usr/src/kernels/%%{kernel_version}\n'
+	printf '\n'
+	printf '%%install\n'
+	printf 'install -D -m 0644 ipu-bridge.ko \\\n'
+	printf '  %%{buildroot}/usr/lib/modules/%%{kernel_version}/extra/ipu-bridge.ko\n'
+	printf '\n'
+	printf '%%files\n'
+	printf '/usr/lib/modules/%%{kernel_version}/extra/ipu-bridge.ko\n'
+} > %{src_dir}/%{akmod_name}.kmodspec
 
 %build
 

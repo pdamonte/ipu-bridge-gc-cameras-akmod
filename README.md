@@ -43,14 +43,22 @@ v4l2-ctl --list-devices
 media-ctl -d /dev/media0 -p
 ```
 
-## Related Sensor Modules
+## Related repositories
 
-Use this package together with Fedora packages for:
+Use this bridge package together with the sensor-specific driver packages:
 
-- `gc5035` / `gti5035`
-- `gc8034`
+- [`pdamonte/gc5035-dkms`](https://github.com/pdamonte/gc5035-dkms):
+  Ubuntu/Debian DKMS package for the `GC5035` / `GCTI5035` camera sensor
+  driver. The module built by that repo is `gti5035`.
+- [`pdamonte/gc8034-dkms`](https://github.com/pdamonte/gc8034-dkms):
+  Ubuntu/Debian DKMS package for the `GC8034` / `GCTI8034` camera sensor
+  driver. The module built by that repo is `gc8034`.
 
 ## Notes
 
 This repo is Fedora-oriented. For Ubuntu/Debian-style DKMS packaging, use a
 separate DKMS package instead.
+
+## License
+
+This project is licensed under `GPL-2.0-only`. See [LICENSE](LICENSE).
