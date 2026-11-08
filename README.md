@@ -1,5 +1,11 @@
 # Intel IPU6 bridge support for GC camera sensors on Fedora
 
+> **Fedora users:** this package is superseded by
+> [gc-cameras-akmod](https://github.com/pdamonte/gc-cameras-akmod), a single
+> akmod that builds `gti5035`, `gc8034` and the patched `ipu_bridge` for every
+> kernel, works on kernel 7.2+, fixes front/rear camera facing, and keeps the
+> stock `ipu_bridge` out of the initramfs.
+
 Fedora akmods package for a patched Intel IPU6 bridge module that advertises
 support for:
 
